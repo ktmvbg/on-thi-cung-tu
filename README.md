@@ -13,6 +13,6 @@ Vite proxy `/api` tới `http://127.0.0.1:8000` khi phát triển.
 
 ## Website public qua Cloudflare Tunnel
 
-Named Cloudflare Tunnel `on-thi-cung-tu` trỏ `https://nhaqrigroup.uk` tới `http://127.0.0.1:8000`. FastAPI phục vụ trực tiếp bản React trong `dist`, vì vậy website và `/api` dùng chung một domain. Repository GitHub chỉ lưu source client, không chạy GitHub Pages/Actions.
+Named Cloudflare Tunnel `on-thi-cung-tu` trỏ `https://on-thi-cung-tu.nhaqrigroup.uk` tới `http://127.0.0.1:8000`. FastAPI phục vụ trực tiếp bản React trong `dist`, vì vậy website và `/api` dùng chung một domain. Repository GitHub chỉ lưu source client, không chạy GitHub Pages/Actions.
 
 Chạy `run.ps1` ở thư mục dự án để khởi động cả backend và tunnel. Có thể thêm `-NoTunnel` nếu chỉ cần chạy local.
