@@ -11,11 +11,8 @@ npm run dev
 
 Vite proxy `/api` tới `http://127.0.0.1:8000` khi phát triển.
 
-## GitHub Pages + Cloudflare Tunnel
+## Website public qua Cloudflare Tunnel
 
-1. Named Cloudflare Tunnel `on-thi-cung-tu` trỏ `https://on-thi-cung-tu.nhaqrigroup.uk` tới `http://127.0.0.1:8000`.
-2. Actions variable `VITE_API_BASE_URL` được đặt thành `https://on-thi-cung-tu.nhaqrigroup.uk/api`.
-3. Backend `.env` cho phép origin `https://ktmvbg.github.io`.
-4. Chọn **Settings → Pages → Source: GitHub Actions**. Workflow trong `.github/workflows/deploy-pages.yml` tự build và deploy khi push vào `main`.
+Named Cloudflare Tunnel `on-thi-cung-tu` trỏ `https://nhaqrigroup.uk` tới `http://127.0.0.1:8000`. FastAPI phục vụ trực tiếp bản React trong `dist`, vì vậy website và `/api` dùng chung một domain. Repository GitHub chỉ lưu source client, không chạy GitHub Pages/Actions.
 
-Không dùng Quick Tunnel cho website lâu dài vì URL ngẫu nhiên thay đổi khi tunnel khởi động lại.
+Chạy `run.ps1` ở thư mục dự án để khởi động cả backend và tunnel. Có thể thêm `-NoTunnel` nếu chỉ cần chạy local.
