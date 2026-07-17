@@ -13,9 +13,9 @@ Vite proxy `/api` tới `http://127.0.0.1:8000` khi phát triển.
 
 ## GitHub Pages + Cloudflare Tunnel
 
-1. Tạo một named Cloudflare Tunnel trỏ hostname public (ví dụ `api.example.com`) tới `http://127.0.0.1:8000`.
-2. Trong repository GitHub, tạo Actions variable `VITE_API_BASE_URL` với giá trị `https://api.example.com/api`.
-3. Ở backend `.env`, đặt `FRONTEND_ORIGINS=https://TEN_GITHUB.github.io` rồi khởi động lại app.
+1. Named Cloudflare Tunnel `on-thi-cung-tu` trỏ `https://on-thi-cung-tu.nhaqrigroup.uk` tới `http://127.0.0.1:8000`.
+2. Actions variable `VITE_API_BASE_URL` được đặt thành `https://on-thi-cung-tu.nhaqrigroup.uk/api`.
+3. Backend `.env` cho phép origin `https://ktmvbg.github.io`.
 4. Chọn **Settings → Pages → Source: GitHub Actions**. Workflow trong `.github/workflows/deploy-pages.yml` tự build và deploy khi push vào `main`.
 
 Không dùng Quick Tunnel cho website lâu dài vì URL ngẫu nhiên thay đổi khi tunnel khởi động lại.
