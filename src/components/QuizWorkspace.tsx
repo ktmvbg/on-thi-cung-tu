@@ -126,7 +126,7 @@ function QuizSetup({
   bankBusy: boolean
   pregenerateCount: number
   setPregenerateCount: (count: number) => void
-  onPregenerate: () => void
+  onPregenerate: (count?: number) => void
   onUseStored: (exam: StoredExamSummary) => void
   onDeleteStored: (exam: StoredExamSummary) => void
 }) {
@@ -296,10 +296,18 @@ function QuizSetup({
             type="button"
             className="primary-button"
             disabled={bankBusy || !bank?.available_slots}
-            onClick={onPregenerate}
+            onClick={() => onPregenerate()}
           >
             {bankBusy ? <LoaderCircle size={16} className="spin" /> : <Layers3 size={16} />}
             Chạy trước {pregenerateCount} bộ
+          </button>
+          <button
+            type="button"
+            className="secondary-button bank-fill-button"
+            disabled={bankBusy || !bank?.available_slots}
+            onClick={() => onPregenerate(bank?.available_slots ?? 0)}
+          >
+            <Database size={15} /> Lấp đầy kho · {bank?.available_slots ?? 0} bộ
           </button>
           <span>Các bộ được tạo lần lượt để giữ ổn định một conversation riêng cho từng đề.</span>
         </div>
@@ -774,11 +782,11 @@ export function QuizWorkspace({ groups, mode }: QuizWorkspaceProps) {
     }
   }
 
-  const pregenerate = async () => {
+  const pregenerate = async (requestedCount = pregenerateCount) => {
     setError(undefined)
     setBankBusy(true)
     try {
-      const next = await api.pregenerateExams(pregenerateCount, settings)
+      const next = await api.pregenerateExams(requestedCount, settings)
       setBank(next)
     } catch (generateError) {
       setError(generateError instanceof Error ? generateError.message : 'Không thể thêm đề vào hàng chờ.')
@@ -882,7 +890,7 @@ export function QuizWorkspace({ groups, mode }: QuizWorkspaceProps) {
           bankBusy={bankBusy}
           pregenerateCount={pregenerateCount}
           setPregenerateCount={setPregenerateCount}
-          onPregenerate={() => void pregenerate()}
+          onPregenerate={(count) => void pregenerate(count)}
           onUseStored={(exam) => void useStored(exam)}
           onDeleteStored={(exam) => void deleteStored(exam)}
         />

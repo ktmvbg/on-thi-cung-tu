@@ -107,6 +107,7 @@ export interface StoredExamSummary {
   remaining_seconds: number
   current_index: number
   answered_count: number
+  conversation_id?: string
 }
 
 export interface StoredExamDetail extends StoredExamSummary {

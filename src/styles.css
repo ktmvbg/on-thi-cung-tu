@@ -448,6 +448,8 @@ h1, h2, h3, p { margin-top: 0; }
 .exam-bank__actions { display: flex; align-items: center; gap: 10px; margin-top: 18px; padding: 12px; border: 1px solid rgba(132,164,178,.12); border-radius: 13px; background: rgba(8,23,35,.45); }
 .exam-bank__actions > span { color: #58717d; font-size: 7px; }
 .exam-bank__actions .primary-button:disabled { cursor: not-allowed; opacity: .45; }
+.exam-bank__actions .secondary-button:disabled { cursor: not-allowed; opacity: .45; }
+.bank-fill-button { white-space: nowrap; }
 .bank-stepper { display: flex; height: 38px; align-items: center; overflow: hidden; border: 1px solid rgba(50,216,207,.18); border-radius: 10px; background: rgba(7,20,31,.8); }
 .bank-stepper button { width: 34px; height: 100%; color: #76aaa7; border: 0; cursor: pointer; background: transparent; font-size: 18px; }
 .bank-stepper button:hover { background: rgba(50,216,207,.08); }
